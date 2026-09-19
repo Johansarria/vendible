@@ -6,7 +6,7 @@
 
 Vendible es un producto de inteligencia artificial que convierte el WhatsApp oficial de un negocio en un vendedor autónomo: atención 24/7, consulta de inventario real, recuperación de carritos abandonados y notificación de guías de envío — sin intervención humana.
 
-En producción desde septiembre de 2026 sobre una tienda real en Colombia.
+En producción desde agosto de 2026 sobre una tienda real en Colombia.
 
 ## 📊 Resultados en producción
 
