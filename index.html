@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="alternate" hreflang="es-CO" href="https://vendible.cloud/">
+<link rel="alternate" hreflang="es" href="https://vendible.cloud/">
+<title>Vendible — Agentes de IA que venden por WhatsApp | Colombia</title>
+<meta name="description" content="Agentes de IA para WhatsApp: atención 24/7, recuperación de carritos, agenda de citas para negocios con cita previa, tiendas en Shopify, WooCommerce o Dropi, y desarrollo de web y software a medida con IA. Caso real en producción: 71,7 % de los pedidos entran por WhatsApp.">
+<link rel="canonical" href="https://vendible.cloud/">
+<meta name="theme-color" content="#08090A">
+<meta name="author" content="Johan Sarria">
+<meta name="geo.region" content="CO-VAC">
+<meta name="geo.placename" content="Cali">
+<meta name="geo.position" content="3.4516;-76.5320">
+<meta name="ICBM" content="3.4516, -76.5320">
+
+<!-- Open Graph / redes -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CO">
+<meta property="og:site_name" content="Vendible">
+<meta property="og:url" content="https://vendible.cloud/">
+<meta property="og:title" content="Agentes de IA que venden por WhatsApp — Vendible">
+<meta property="og:description" content="Atiende 24/7, consulta inventario real, recupera carritos abandonados y avisa las guías de envío. Caso real en producción en Colombia.">
+<meta property="og:image" content="https://vendible.cloud/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:updated_time" content="2026-09-19T10:00:00-05:00">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Agentes de IA que venden por WhatsApp — Vendible">
+<meta name="twitter:description" content="Caso real en producción: 71,7 % de los pedidos entran por WhatsApp. Agente con inventario real y recuperación de carritos.">
+<meta name="twitter:image" content="https://vendible.cloud/og.png">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="180x180" href="favicon-180.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+<link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+
+<style>
+  @font-face{
+    font-family:"InterVar";
+    src:url("fonts/inter.woff2") format("woff2-variations");
+    font-weight:100 900;font-style:normal;font-display:swap;
+  }
+  :root{
+    --bg:#08090A; --panel:#0E0F11; --panel-2:#131417; --line:#1D1F23; --line-soft:#16181B;
+    --fg:#F2F3F5; --fg-2:#A8ADB4; --fg-3:#6E747C;
+    --teal:#08C8B0; --teal-dim:#0F5F52; --teal-glow:rgba(8,200,176,.14);
+    --wa:#0B4B3A;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    --sans:"InterVar","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --w:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
+  body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16.5px;line-height:1.6;
+       -webkit-font-smoothing:antialiased;overflow-x:hidden}
+  ::selection{background:var(--teal);color:#04120F}
+  .wrap{max-width:var(--w);margin:0 auto;padding:0 28px}
+  h1,h2,h3{letter-spacing:-.035em;line-height:1.06;font-weight:600;font-variation-settings:"wght" 600}
+  h1{font-size:clamp(36px,6vw,66px)}
+  h2{font-size:clamp(26px,3.7vw,40px)}
+  h3{font-size:17px}
+  p{color:var(--fg-2)}
+  a{color:inherit}
+  .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+  .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--fg-3)}
+
+  header{position:fixed;inset:0 0 auto;z-index:60;backdrop-filter:blur(14px) saturate(160%);
+         background:rgba(8,9,10,.74);border-bottom:1px solid var(--line-soft)}
+  .nav{display:flex;align-items:center;height:58px;gap:30px}
+  .mark{display:flex;align-items:center;gap:8px;font-weight:650;font-size:16px;letter-spacing:-.02em;text-decoration:none}
+  .nav nav{margin-left:auto;display:flex;gap:24px;font-size:14px;color:var(--fg-2)}
+  .nav nav a{text-decoration:none;transition:color .15s}
+  .nav nav a:hover{color:var(--fg)}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:8px;font-size:14.5px;
+       font-weight:550;text-decoration:none;border:1px solid transparent;transition:.16s;white-space:nowrap}
+  .btn:active{transform:translateY(1px)}
+  .btn-solid{background:var(--teal);color:#04120F;font-weight:650}
+  .btn-solid:hover{box-shadow:0 0 0 4px var(--teal-glow)}
+  .btn-ghost{border-color:var(--line);color:var(--fg)}
+  .btn-ghost:hover{border-color:#31353B;background:var(--panel)}
+  .btn-sm{padding:8px 14px;font-size:13.5px}
+  .edge{position:fixed;top:0;left:0;right:0;height:1px;z-index:70;
+        background:linear-gradient(90deg,transparent,var(--teal),transparent);opacity:.55}
+
+  .hero{padding:126px 0 80px;position:relative}
+  .hero::before{content:"";position:absolute;left:50%;top:-160px;width:min(900px,100vw);height:520px;
+        transform:translateX(-50%);background:radial-gradient(ellipse at top,rgba(8,200,176,.10),transparent 68%);
+        pointer-events:none}
+  .pill{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);background:var(--panel);
+        border-radius:999px;padding:6px 13px 6px 10px;font-size:12.5px;color:var(--fg-2);font-family:var(--mono)}
+  .live{width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 3px var(--teal-glow);
+        animation:pulse 2.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  .hero h1{margin:24px 0 22px;max-width:16ch}
+  .hero h1 em{font-style:normal;color:var(--teal)}
+  .sub{font-size:19px;max-width:58ch}
+  .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;align-items:center}
+  .micro{font-size:13px;color:var(--fg-3);font-family:var(--mono)}
+
+  /* --- demo: conversacion + eventos --- */
+  .mock{margin-top:60px;border:1px solid var(--line);border-radius:14px;background:var(--panel);overflow:hidden;
+        box-shadow:0 40px 90px -40px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.02)}
+  .mock-bar{display:flex;align-items:center;gap:8px;padding:11px 14px;border-bottom:1px solid var(--line-soft);background:#0B0C0E}
+  .dot{width:9px;height:9px;border-radius:50%;background:#232629}
+  .mock-url{margin-left:10px;font-family:var(--mono);font-size:11.5px;color:var(--fg-3);background:#08090A;
+            border:1px solid var(--line-soft);border-radius:6px;padding:3px 9px}
+  .mock-body{display:grid;grid-template-columns:1.1fr .9fr;min-height:400px}
+  .chat{padding:20px;display:flex;flex-direction:column;gap:11px;border-right:1px solid var(--line-soft);
+        background:#0A0B0D}
+  .burbuja{max-width:84%;padding:9px 13px;border-radius:12px;font-size:14.2px;line-height:1.5;
+           opacity:0;transform:translateY(6px);animation:entra .5s ease forwards}
+  .burbuja.cli{background:#1A1C20;border:1px solid var(--line);border-bottom-left-radius:4px}
+  .burbuja.bot{background:var(--wa);border:1px solid rgba(8,200,176,.28);color:#DDFBF4;margin-left:auto;
+               border-bottom-right-radius:4px}
+  .burbuja .hora{display:block;font-family:var(--mono);font-size:10px;color:var(--fg-3);margin-top:5px}
+  .burbuja.bot .hora{color:rgba(221,251,244,.6);text-align:right}
+  @keyframes entra{to{opacity:1;transform:none}}
+  .b1{animation-delay:.2s}.b2{animation-delay:1.3s}.b3{animation-delay:2.6s}.b4{animation-delay:3.6s}
+  .b5{animation-delay:5s}.b6{animation-delay:6.4s}
+  .sistema{align-self:center;font-family:var(--mono);font-size:10.5px;color:var(--fg-3);
+           border:1px solid var(--line-soft);border-radius:999px;padding:4px 11px;opacity:0;
+           animation:entra .5s ease forwards;animation-delay:4.4s}
+  .escr{display:flex;gap:4px;align-self:flex-start;background:#1A1C20;border:1px solid var(--line);
+        padding:11px 13px;border-radius:12px;border-bottom-left-radius:4px;opacity:0;
+        animation:entra .4s ease forwards;animation-delay:4s}
+  .escr i{width:6px;height:6px;border-radius:50%;background:var(--fg-3);animation:salto 1.2s infinite}
+  .escr i:nth-child(2){animation-delay:.15s}.escr i:nth-child(3){animation-delay:.3s}
+  @keyframes salto{0%,60%,100%{opacity:.35;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+  .log{padding:20px;background:var(--panel-2)}
+  .log h4{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-3);
+          font-weight:500;margin-bottom:14px}
+  .ev{display:grid;grid-template-columns:52px 1fr;gap:10px;font-family:var(--mono);font-size:11.5px;padding:7px 0;
+      border-bottom:1px dashed var(--line-soft);color:var(--fg-2)}
+  .ev:last-of-type{border-bottom:0}
+  .ev time{color:var(--fg-3)}
+  .ev b{color:var(--fg);font-weight:500}
+  .ev .t2{color:var(--teal)}
+  .rec{margin-top:12px;border:1px solid rgba(8,200,176,.28);background:rgba(8,200,176,.06);border-radius:8px;
+       padding:10px 12px;font-family:var(--mono);font-size:11.5px;color:#B9F5E8}
+
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));border:1px solid var(--line);
+        border-radius:12px;overflow:hidden;margin-top:26px;background:var(--panel)}
+  .kpi{padding:24px 22px;border-right:1px solid var(--line-soft)}
+  .kpi:last-child{border-right:0}
+  .kpi b{display:block;font-family:var(--mono);font-size:clamp(25px,3.3vw,36px);font-weight:500;
+         letter-spacing:-.03em;color:var(--fg)}
+  .kpi span{font-size:13.5px;color:var(--fg-3);display:block;margin-top:6px}
+  .nota{margin-top:18px;font-size:12.5px;color:var(--fg-3);max-width:76ch;font-family:var(--mono);line-height:1.7}
+
+  section{padding:84px 0;border-top:1px solid var(--line-soft)}
+  .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));border:1px solid var(--line);
+         border-radius:12px;overflow:hidden;margin-top:34px;background:var(--panel)}
+  .celda{padding:26px 24px;border-right:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+  .celda p{font-size:15px;margin-top:7px}
+  .ic{width:30px;height:30px;border-radius:7px;border:1px solid var(--line);background:var(--panel-2);
+      display:flex;align-items:center;justify-content:center;margin-bottom:14px;color:var(--teal)}
+  .ic svg{width:15px;height:15px}
+  .xy{display:flex;flex-wrap:wrap;gap:26px;margin-top:30px}
+  .xy > div{flex:1 1 300px;border:1px solid var(--line);border-radius:12px;padding:22px 24px;background:var(--panel)}
+  .xy h4{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-3);
+         font-weight:500;margin-bottom:14px}
+  .xy ul{list-style:none;display:grid;gap:9px}
+  .xy li{position:relative;padding-left:20px;font-size:15px;color:var(--fg-2)}
+  .xy li::before{content:"";position:absolute;left:2px;top:9px;width:6px;height:6px;border-radius:50%;background:var(--fg-3)}
+  .xy li.ok::before{background:var(--teal)}
+
+  .tabla{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:34px}
+  .tabla.dos .fila{grid-template-columns:1fr 1.7fr}
+  .fila{display:grid;grid-template-columns:1.4fr 1fr .9fr;border-bottom:1px solid var(--line-soft)}
+  .fila:last-child{border-bottom:0}
+  .fila > div{padding:18px 22px;border-right:1px solid var(--line-soft);font-size:15px}
+  .fila > div:last-child{border-right:0}
+  .cab{background:var(--panel-2)}
+  .cab > div{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-3)}
+  .fila .precio{font-family:var(--mono);text-align:right;color:var(--fg)}
+  .fila.destacada{background:rgba(8,200,176,.045)}
+  .fila.destacada .nom{color:var(--teal)}
+  .chip{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+        border:1px solid rgba(8,200,176,.35);color:var(--teal);border-radius:999px;padding:2px 8px;margin-left:8px}
+  .nom{font-weight:550;color:var(--fg)}
+
+  .linea{margin-top:34px;border-left:1px solid var(--line)}
+  .paso{position:relative;padding:0 0 30px 30px}
+  .paso::before{content:"";position:absolute;left:-4.5px;top:7px;width:8px;height:8px;border-radius:50%;
+                background:var(--bg);border:1px solid var(--teal)}
+  .paso:last-child{padding-bottom:0}
+  .paso strong{display:block;font-size:16.5px;font-weight:550}
+  .paso p{font-size:15px;margin-top:3px}
+  .paso .n{font-family:var(--mono);font-size:11.5px;color:var(--fg-3);margin-right:9px}
+
+  .promo{margin-top:26px;border:1px solid rgba(8,200,176,.35);background:rgba(8,200,176,.06);
+         border-radius:10px;padding:14px 18px;font-size:14.5px;color:var(--fg-2);line-height:1.6}
+  .promo b{color:var(--teal)}
+  .fila .precio s{color:var(--fg-3);font-size:13px;text-decoration:line-through;display:block}
+  .fila .precio b{color:var(--teal);font-weight:600}
+  .fila .precio u{display:block;text-decoration:none;font-size:11.5px;color:var(--fg-3);margin-top:5px}
+  .dcto{display:inline-block;font-family:var(--mono);font-size:11px;background:rgba(8,200,176,.15);
+        border:1px solid rgba(8,200,176,.45);color:var(--teal);border-radius:999px;padding:1px 7px;
+        margin-left:6px;vertical-align:middle}
+  .meses{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:26px}
+  .mes{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--panel)}
+  .mes b{display:block;font-size:15px}
+  .mes span{display:block;font-family:var(--mono);font-size:19px;color:var(--teal);margin:6px 0 8px}
+  .mes p{font-size:14px}
+  .pagos{margin-top:22px;border:1px solid var(--line);border-radius:12px;padding:20px 22px;background:var(--panel)}
+  .pagos h4{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+            color:var(--fg-3);font-weight:500;margin-bottom:12px}
+  .pagos ul{list-style:none;display:grid;gap:9px}
+  .pagos li{font-size:14.5px;color:var(--fg-2);position:relative;padding-left:18px}
+  .pagos li::before{content:"";position:absolute;left:2px;top:9px;width:5px;height:5px;border-radius:50%;
+                    background:var(--teal)}
+  .faq{margin-top:34px;display:grid;gap:0}
+  details{border-bottom:1px solid var(--line-soft)}
+  details:first-of-type{border-top:1px solid var(--line-soft)}
+  summary{cursor:pointer;padding:20px 0;font-size:17px;font-weight:550;list-style:none;display:flex;gap:16px;
+          align-items:baseline;color:var(--fg)}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:"+";font-family:var(--mono);color:var(--teal);font-size:15px;flex:0 0 14px}
+  details[open] summary::before{content:"−"}
+  details p{padding:0 0 22px 30px;max-width:74ch;font-size:15.5px}
+
+  .cierre{background:radial-gradient(ellipse 120% 60% at 50% 120%,rgba(8,200,176,.10),transparent 70%),var(--bg);
+          padding:104px 0;text-align:center}
+  .cierre h2{max-width:22ch;margin:18px auto 16px}
+  .cierre .sub{margin:0 auto;max-width:52ch}
+  .cierre .row{justify-content:center}
+  .contacto{margin-top:34px;display:flex;flex-wrap:wrap;gap:24px;justify-content:center;font-family:var(--mono);
+            font-size:13.5px;color:var(--fg-3)}
+  .contacto a{text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px}
+  .contacto a:hover{color:var(--teal);border-color:var(--teal)}
+  footer{border-top:1px solid var(--line-soft);padding:26px 0;font-size:13px;color:var(--fg-3)}
+  .pie{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+  .pie-marca{display:inline-flex;align-items:center;gap:9px}
+  .pie-marca img{height:24px;width:auto;display:block}
+  .pie .mono{color:var(--fg-2)}
+
+  @media(max-width:860px){
+    .nav nav{display:none}
+    .mock-body{grid-template-columns:1fr}
+    .chat{border-right:0;border-bottom:1px solid var(--line-soft)}
+    .fila{grid-template-columns:1.3fr 1fr}
+    .fila .det{display:none}
+    section{padding:60px 0}
+    .hero{padding:100px 0 60px}
+    .kpi{border-right:0;border-bottom:1px solid var(--line-soft)}
+  }
+/* --- boton flotante de WhatsApp + captura de lead --- */
+  #waFlota{position:fixed;right:20px;bottom:20px;z-index:80;display:inline-flex;align-items:center;gap:10px;
+    background:#25D366;color:#04210F;border:0;border-radius:999px;padding:14px 22px 14px 16px;cursor:pointer;
+    font-family:var(--sans);font-size:15px;font-weight:650;box-shadow:0 14px 34px rgba(0,0,0,.45);
+    transition:transform .14s ease, box-shadow .2s ease}
+  #waFlota:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(0,0,0,.55)}
+  #waFlota svg{width:22px;height:22px;flex:0 0 22px}
+  .lead-panel{position:fixed;right:20px;bottom:88px;z-index:81;width:min(380px,calc(100vw - 32px));
+    background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;
+    box-shadow:0 30px 70px rgba(0,0,0,.6);max-height:min(78vh,720px);overflow:auto}
+  .lead-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:6px}
+  .lead-head b{font-size:17px;letter-spacing:-.02em}
+  .lead-head button{background:none;border:0;color:var(--fg-3);font-size:22px;line-height:1;cursor:pointer;padding:0 4px}
+  .lead-head button:hover{color:var(--fg)}
+  .lead-sub{font-size:13.5px;color:var(--fg-2);margin-bottom:16px}
+  .lead-panel label{display:block;font-size:12.5px;color:var(--fg-3);margin-bottom:12px;font-family:var(--mono)}
+  .lead-panel label span{text-transform:none;letter-spacing:0}
+  .lead-panel input,.lead-panel select,.lead-panel textarea{width:100%;margin-top:5px;padding:11px 12px;
+    background:var(--bg);border:1px solid var(--line);border-radius:9px;color:var(--fg);font-family:var(--sans);
+    font-size:15px;letter-spacing:normal}
+  .lead-panel input:focus,.lead-panel select:focus,.lead-panel textarea:focus{outline:0;border-color:var(--teal)}
+  .lead-panel textarea{resize:vertical}
+  .lead-trampa{position:absolute!important;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+  .lead-check{display:flex!important;gap:9px;align-items:flex-start;font-family:var(--sans)!important;
+    font-size:12.5px!important;color:var(--fg-2)!important;text-transform:none;letter-spacing:normal}
+  .lead-check input{width:auto;margin:2px 0 0;flex:0 0 auto}
+  .lead-enviar{width:100%;margin-top:4px;background:var(--teal);color:#04120F;border:0;border-radius:9px;
+    padding:13px 18px;font-family:var(--sans);font-size:15px;font-weight:650;cursor:pointer}
+  .lead-enviar:hover{box-shadow:0 0 0 4px var(--teal-glow)}
+  .lead-enviar[disabled]{opacity:.6;cursor:default}
+  .lead-nota{font-size:11.5px;color:var(--fg-3);margin-top:11px;line-height:1.6}
+  .lead-ok{font-size:14.5px;color:var(--fg-2);line-height:1.65}
+  .lead-ok b{display:block;color:var(--fg);font-size:16px;margin-bottom:8px}
+  @media(max-width:520px){
+    #waFlota{right:14px;bottom:14px;padding:15px;border-radius:50%}
+    #waFlota span{display:none}
+    .lead-panel{right:8px;left:8px;width:auto;bottom:82px}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .burbuja,.sistema,.escr{opacity:1!important;transform:none!important}
+  }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"ProfessionalService",
+      "@id":"https://vendible.cloud/#organization",
+      "name":"Vendible",
+      "description":"Agentes de IA para WhatsApp integrados al inventario real de tiendas en Colombia: atención 24/7, recuperación de carritos abandonados y notificación de guías de envío.",
+      "url":"https://vendible.cloud/",
+      "email":"contacto@vendible.cloud",
+      "telephone":"+573****6163",
+      "image":"https://vendible.cloud/og.png",
+      "founder":{"@type":"Person","name":"Johan Sarria","jobTitle":"Arquitectura de software y agentes de IA"},
+      "address":{"@type":"PostalAddress","addressLocality":"Cali","addressRegion":"Valle del Cauca","addressCountry":"CO"},
+      "areaServed":{"@type":"Country","name":"Colombia"},
+      "knowsLanguage":["es"],
+      "makesOffer":[
+        {"@type":"Offer","itemOffered":{"@type":"Service","name":"Tienda lista y vendiendo","description":"Tienda en Shopify, WooCommerce o conectada a Dropi: catálogo, pagos, envíos y botón de WhatsApp."}},
+        {"@type":"Offer","itemOffered":{"@type":"Service","name":"Agente de IA para WhatsApp","description":"Atención 24/7, recuperación de carritos abandonados y notificación de guías de envío, sobre la tienda del cliente."}},
+        {"@type":"Offer","itemOffered":{"@type":"Service","name":"Agenda y citas","description":"Agendamiento sobre la disponibilidad real, confirmación, recordatorios y reprogramación por WhatsApp, para negocios con cita previa."}},
+        {"@type":"Offer","itemOffered":{"@type":"Service","name":"Sitios web y software a medida","description":"Desarrollo desde cero con IA integrada: sitios web, sistemas internos, integraciones y tableros."}}
+      ]
+    },
+    {
+      "@type":"WebSite",
+      "@id":"https://vendible.cloud/#website",
+      "url":"https://vendible.cloud/",
+      "name":"Vendible — Agentes de IA para WhatsApp | Colombia",
+      "publisher":{"@id":"https://vendible.cloud/#organization"}
+    },
+    {
+      "@type":"FAQPage",
+      "@id":"https://vendible.cloud/#faq",
+      "mainEntity":[
+        {"@type":"Question","name":"¿Y si el cliente quiere hablar con una persona?","acceptedAnswer":{"@type":"Answer","text":"La conversación pasa a tu equipo cuando el caso lo pide: reclamos, casos raros o simplemente cuando el cliente lo pide. La persona recibe el hilo completo, no empieza de cero."}},
+        {"@type":"Question","name":"¿Tengo que cambiar mi número de WhatsApp?","acceptedAnswer":{"@type":"Answer","text":"Sí, y conviene saberlo desde el principio: el número se migra a la API oficial de Meta (WhatsApp Business Platform). Sigue siendo el mismo número de siempre para tus clientes; lo que cambia es por dónde pasa técnicamente. Es un trámite que se hace una vez."}},
+        {"@type":"Question","name":"¿Qué pasa si Meta no aprueba el proceso?","acceptedAnswer":{"@type":"Answer","text":"Es poco frecuente si el negocio está formalizado, pero si ocurriera, no cobro la parte del agente y se queda solo la tienda. Prefiero que el riesgo no lo asumas tú en solitario."}},
+        {"@type":"Question","name":"¿Los datos y los clientes son míos?","acceptedAnswer":{"@type":"Answer","text":"Sí. Cada cliente tiene su propia base de datos — no compartida con otras tiendas — y puedes llevarte la base de leads con su origen de campaña cuando quieras. El sistema no secuestra tu información."}},
+        {"@type":"Question","name":"¿Sirve si mi tienda es WooCommerce y no Shopify?","acceptedAnswer":{"@type":"Answer","text":"Sí. Lo he trabajado con las dos: Shopify y WooCommerce. Si tienes algo distinto, se define en el diagnóstico."}},
+        {"@type":"Question","name":"¿Cuánto tardo en ver resultados?","acceptedAnswer":{"@type":"Answer","text":"La tienda y el agente están operando entre 2 y 4 semanas después de arrancar, más el tiempo del trámite de Meta. Los primeros datos comparables aparecen al mes siguiente de estar en producción."}},
+        {"@type":"Question","name":"Tengo un negocio con agenda y no vendo productos ¿sirve igual?","acceptedAnswer":{"@type":"Answer","text":"Sí, y es uno de los mejores casos: el agente asigna la cita sobre tu disponibilidad real, confirma, recuerda antes de la fecha y reprograma si el paciente cancela. El cuello de botella de un negocio con agenda casi nunca es el precio: es el teléfono sin contestar y los cupos que se pierden por un olvido."}},
+        {"@type":"Question","name":"¿Se conecta con la agenda o el software que ya uso?","acceptedAnswer":{"@type":"Answer","text":"Depende del sistema: si tiene API o calendario accesible, se integra; si vive en Excel o en papel, se migra la información y queda en una base propia. Se define en el diagnóstico, antes de cotizar."}},
+        {"@type":"Question","name":"¿Hasta cuándo están los precios de lanzamiento?","acceptedAnswer":{"@type":"Answer","text":"Hasta el 31 de octubre de 2026. Hay descuento de lanzamiento en la tienda y en el paquete de tienda + agente, y en el agente y la agenda los primeros meses de operación van sin costo firmando contrato anual. Los valores exactos te los doy en la propuesta, según tu alcance."}},
+        {"@type":"Question","name":"¿Puedo pagar semestral o anual?","acceptedAnswer":{"@type":"Answer","text":"Sí. Semestral: pagas 5 meses y el 6.º va por cuenta nuestra. Anual: pagas 10 y 2 van por cuenta nuestra. En ambos casos el ahorro aplica sobre la operación mensual, no sobre el setup de instalación, y no se suma al descuento de lanzamiento: se elige el que más te convenga."}}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="edge"></div>
+
+<header>
+  <div class="wrap nav">
+    <a class="mark" href="#top">
+      <img src="marca/isotipo.png" alt="" style="display:block;height:29px;width:auto;flex:0 0 auto">
+      Vendible
+    </a>
+    <nav>
+      <a href="#problema">Problema</a>
+      <a href="#sistema">El sistema</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#citas">Con citas</a>
+      <a href="#planes">Planes</a>
+      <a href="#amedida">A medida</a>
+      <a href="#preguntas">Preguntas</a>
+    </nav>
+    <a class="btn btn-solid btn-sm" href="https://wa.me/573137476163?text=Hola%2C%20quiero%20el%20diagn%C3%B3stico%20de%2030%20minutos">Diagnóstico gratis</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero" style="border-top:0">
+    <div class="wrap">
+      <span class="pill"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="color:var(--teal);flex:0 0 13px"><path d="M20 6L9 17l-5-5"/></svg>Sin cambiar tu número ni tu tienda</span>
+      <h1>El agente que vende en tu <em>WhatsApp oficial</em></h1>
+      <p class="sub">Atiende, consulta tu inventario real, recupera los carritos que se pierden y avisa las guías de envío. Observa lo que pasa en tu negocio y ejecuta acciones — no responde con menús fijos.</p>
+      <p class="sub" style="margin-top:14px;font-size:17px">¿Vendes productos o agendas citas? <strong style="color:var(--fg)">El mismo agente hace las dos cosas</strong>: <a href="#citas" style="color:var(--teal);text-decoration:none;border-bottom:1px solid var(--teal)">míralo si tu negocio trabaja con agenda</a>.</p>
+      <div class="row">
+        <a class="btn btn-solid" href="https://wa.me/573137476163?text=Hola%2C%20quiero%20el%20diagn%C3%B3stico%20de%2030%20minutos">Agendar diagnóstico de 30 min</a>
+        <a class="btn btn-ghost" href="#planes">Ver planes</a>
+      </div>
+
+      <div class="mock">
+        <div class="mock-bar">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="mock-url">whatsapp · agente activo · inventario conectado</span>
+        </div>
+        <div class="mock-body">
+          <div class="chat">
+            <div class="burbuja cli b1">Buenas, ¿tienen la referencia 2042 en talla 42?<span class="hora">14:02</span></div>
+            <div class="burbuja bot b2">¡Hola! Sí, quedan 3 en 42. Está en $186.000 y hay promo de temporada. ¿Te la aparto?<span class="hora">14:02</span></div>
+            <div class="burbuja cli b3">¿y en 43?<span class="hora">14:03</span></div>
+            <div class="escr b4"><i></i><i></i><i></i></div>
+            <div class="burbuja bot b5">En 43 quedan 2. ¿Cuál prefieres que te separe?<span class="hora">14:03</span></div>
+            <div class="sistema b4">stock verificado contra inventario real · 14:03</div>
+            <div class="burbuja cli b5">la 42 entonces<span class="hora">14:19</span></div>
+            <div class="burbuja bot b6">Lista, te la aparto 2 horas. Aquí puedes pagar: pago.tutienda.co/4822 ✅<span class="hora">14:19</span></div>
+          </div>
+          <div class="log">
+            <h4>Eventos del sistema</h4>
+            <div class="ev"><time>14:02</time><span><b>cart.abandoned</b><br>carrito #4821 · $186.000</span></div>
+            <div class="ev"><time>14:03</time><span><b>escalera / 1</b><br>plantilla utility enviada</span></div>
+            <div class="ev"><time>14:19</time><span><b>link.click</b><br>checkout abierto</span></div>
+            <div class="ev"><time>14:26</time><span><b class="t2">order.paid</b><br>pedido #4822 · $186.000</span></div>
+            <div class="rec">↳ recuperado en 24 min · sin intervención humana</div>
+          </div>
+        </div>
+      </div>
+      <p class="nota">Escena del flujo real: el mismo carrito que hoy se pierde, cobrado sin que nadie lo persiga a mano.</p>
+    </div>
+  </section>
+
+  <section id="problema">
+    <div class="wrap">
+      <p class="eyebrow">El problema</p>
+      <h2 style="margin-top:14px;max-width:20ch">Cada mensaje sin responder es una venta que se va</h2>
+      <div class="xy">
+        <div>
+          <h4>Lo que pasa hoy</h4>
+          <ul>
+            <li>Consultas de noche, domingos y festivos: sin respuesta.</li>
+            <li>Alrededor del <strong style="color:var(--fg)">70 %</strong> de los carritos se abandonan y nadie los rescata.</li>
+            <li>Guías y estados de pedido contestados uno por uno, todos los días.</li>
+            <li>No sabes qué campaña trajo al cliente que sí compró.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Lo que cambia</h4>
+          <ul>
+            <li class="ok">Respuesta inmediata, todos los días, con el tono de tu marca.</li>
+            <li class="ok">Escalera de recuperación automática sobre el carrito real.</li>
+            <li class="ok">Guía de envío enviada en el momento del despacho.</li>
+            <li class="ok">Cada lead queda con su origen — y la base es tuya.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sistema">
+    <div class="wrap">
+      <p class="eyebrow">El sistema</p>
+      <h2 style="margin-top:14px;max-width:24ch">No es un chatbot. Es una capa que opera tu tienda</h2>
+      <p style="margin-top:16px;max-width:64ch">Se conecta a tu tienda (Shopify o WooCommerce) y trabaja sobre datos reales: inventario, pedidos, envíos y clientes.</p>
+      <div class="grid2">
+        <div class="celda">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <h3>Atención 24/7 con relevo humano</h3>
+          <p>Cuando el caso se sale del guion, pasa la conversación a una persona de tu equipo con todo el contexto.</p>
+        </div>
+        <div class="celda">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h10M4 17h7"/></svg></div>
+          <h3>Stock y precios en vivo</h3>
+          <p>Consulta tu inventario antes de prometer. Nunca inventa disponibilidad ni precios.</p>
+        </div>
+        <div class="celda">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18v12H3z"/><path d="M3 10h18"/></svg></div>
+          <h3>Recuperación de carritos</h3>
+          <p>Escalera de descuentos programada, disparada por el evento del carrito y no por una persona.</p>
+        </div>
+        <div class="celda">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7l9 6 9-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg></div>
+          <h3>Guías de envío automáticas</h3>
+          <p>El cliente recibe su guía en el instante del despacho. Se acaban los "¿ya salió mi pedido?".</p>
+        </div>
+        <div class="celda">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18"/></svg></div>
+          <h3>Leads con origen de campaña</h3>
+          <p>Cada interesado queda con el dato de por dónde llegó. Tu pauta deja de ser a ciegas.</p>
+        </div>
+        <div class="celda">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5m0 14h16"/><path d="M8 15l4-5 3 3 4-6"/></svg></div>
+          <h3>Panel de visibilidad</h3>
+          <p>Qué pasó, cuándo y con qué resultado: pedidos, conversaciones, carritos y recuperaciones.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="resultados">
+    <div class="wrap">
+      <p class="eyebrow">Resultados medidos</p>
+      <h2 style="margin-top:14px">Una tienda real operando hoy</h2>
+      <div class="kpis">
+        <div class="kpi"><b>71,7 %</b><span>de los pedidos entran por WhatsApp</span></div>
+        <div class="kpi"><b>18 → 55 %</b><span>conversión del clic a pedido en un mes</span></div>
+        <div class="kpi"><b>90</b><span>clientes en base propia, con origen</span></div>
+        <div class="kpi"><b>$186.000</b><span>ticket promedio</span></div>
+      </div>
+      <p class="nota">medición agosto–septiembre 2026 sobre la operación de una tienda real, con período y definición explícitos.</p>
+    </div>
+  </section>
+
+
+  <section id="citas">
+    <div class="wrap">
+      <p class="eyebrow">También si vendes tu tiempo, no un producto</p>
+      <h2 style="margin-top:14px;max-width:26ch">Salones, barberías, consultorios, talleres: tu agenda, atendida sola</h2>
+      <p style="margin-top:16px;max-width:66ch">Cualquier negocio que trabaje con cita previa: peluquerías y barberías, spas y estética, odontología y medicina, fisioterapia, veterinaria, laboratorios, talleres, asesorías. El agente atiende el WhatsApp y administra el calendario — sin que nadie esté pendiente del teléfono.</p>
+      <div class="grid2">
+        <div class="celda">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/></svg></div>
+          <h3>Asigna la cita sola</h3>
+          <p>Consulta tu disponibilidad real y ofrece horarios libres. No inventa cupos ni agenda sobre otra cita.</p>
+        </div>
+        <div class="celda">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 10-12 0c0 7-2 8-2 8h16s-2-1-2-8"/><path d="M10.3 21a2 2 0 003.4 0"/></svg></div>
+          <h3>Confirma y recuerda</h3>
+          <p>Confirmación al agendar y recordatorio antes de la cita, por el mismo WhatsApp. Menos pacientes que se olvidan.</p>
+        </div>
+        <div class="celda">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4v6h6"/><path d="M20 20v-6h-6"/><path d="M20 10a8 8 0 00-14-3M4 14a8 8 0 0014 3"/></svg></div>
+          <h3>Reprograma sin fricción</h3>
+          <p>Si el paciente no puede, el agente libera el cupo y ofrece las siguientes opciones. El hueco no se queda quieto.</p>
+        </div>
+        <div class="celda">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+          <h3>Cobra el anticipo (opcional)</h3>
+          <p>Si quieres asegurar la cita, el agente envía el link de pago y registra el abono antes de confirmar.</p>
+        </div>
+        <div class="celda">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+          <h3>Deja ficha de cada cliente</h3>
+          <p>Queda el contacto, el motivo y el historial de visitas en una base que es tuya, con el origen de la campaña.</p>
+        </div>
+        <div class="celda">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+          <h3>Relevo a una persona del equipo</h3>
+          <p>Urgencias, casos que requieren criterio humano o dudas que se salen del guion pasan a tu equipo con el contexto completo.</p>
+        </div>
+      </div>
+      <p class="nota">se cotiza según el tamaño de tu operación y los módulos que necesites. Si tu agenda vive en Excel o en papel, la migración se suma como módulo aparte, y la operación mensual es la misma.</p>
+    </div>
+  </section>
+
+  <section id="planes">
+    <div class="wrap">
+      <p class="eyebrow">Planes</p>
+      <h2 style="margin-top:14px;max-width:22ch">Empieza por donde estés y suma después</h2>
+      <div class="tabla dos">
+        <div class="fila cab"><div>Plan</div><div>Qué incluye</div></div>
+        <div class="fila"><div class="nom">Tienda</div><div>Tienda lista y vendiendo en <strong style="color:var(--fg-2)">Shopify, WooCommerce o conectada a Dropi</strong>: catálogo, pagos, envíos y botón de WhatsApp.</div></div>
+        <div class="fila"><div class="nom">Agente</div><div>Agente 24/7 + recuperación de carritos + guías de envío, sobre tu tienda actual.</div></div>
+        <div class="fila destacada"><div class="nom">Tienda + Agente</div><div>Los dos como un solo sistema: la tienda que captura y el agente que vende y recupera.</div></div>
+        <div class="fila"><div class="nom">Agente + Agenda<span class="chip">negocios con agenda</span></div><div>Asigna citas sobre tu disponibilidad, confirma, recuerda y reprograma.</div></div>
+        <div class="fila"><div class="nom">Ecosistema completo</div><div>Todo lo anterior + stock en vivo, métricas, canal de bodega y migración de datos.</div></div>
+      </div>
+      <p class="nota">Los valores no se publican: cada negocio necesita un alcance distinto y prefiero no venderte un paquete que no te sirva. Se entregan en la propuesta, después del diagnóstico. <a href="#contacto" style="color:var(--teal);text-decoration:none;border-bottom:1px solid var(--teal)">Cuéntame tu caso</a>.</p>
+      <div class="promo">
+        <b>Descuentos de lanzamiento, vigentes hasta el 31 de octubre de 2026.</b>
+        La tienda y el paquete de tienda + agente tienen descuento de lanzamiento, y en el agente y la agenda los primeros meses de operación
+        van sin costo firmando contrato anual. Cuéntame tu caso y te digo exactamente qué te aplica.
+      </div>
+
+      <div class="meses">
+        <div class="mes"><b>Mantenimiento de tienda</b><p>Hosting gestionado, monitoreo y hasta 2 cambios de catálogo al mes.</p></div>
+        <div class="mes"><b>Operación Esencial</b><p>Agente 24/7, monitoreo, informes mensuales y una hora de bolsa al mes.</p></div>
+        <div class="mes"><b>Operación Gestionada</b><p>Tres horas de bolsa y remarketing incluido, con tope de mensajes al mes.</p></div>
+      </div>
+      <p class="nota">las horas no usadas no se acumulan · las horas adicionales se cobran aparte · 50 % al iniciar y 50 % contra entrega, sin cuotas ocultas.</p>
+
+      <div class="pagos">
+        <h4>Formas de pago</h4>
+        <ul>
+          <li><b>Mensual</b> — mes a mes, sin compromiso.</li>
+          <li><b>Semestral</b> — pagas 5 meses y el 6.º va por cuenta nuestra.</li>
+          <li><b>Anual</b> — pagas 10 meses y 2 van por cuenta nuestra.</li>
+          <li><b>Contrato anual con la promo de lanzamiento</b> — en Agente y Agente + Agenda: los primeros 3 meses de operación sin costo (hasta el 31-oct-2026).</li>
+        </ul>
+        <p class="nota" style="margin-top:12px">La promo de lanzamiento y el descuento por prepago <strong style="color:var(--fg-2)">no se suman</strong>: se aplica el que más te convenga. Los descuentos por prepago son sobre la operación, no sobre el setup.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="amedida">
+    <div class="wrap">
+      <p class="eyebrow">Cuando lo que necesitas no existe en el mercado</p>
+      <h2 style="margin-top:14px;max-width:26ch">También construimos desde cero: web y software con IA integrada</h2>
+      <p style="margin-top:16px;max-width:66ch">No todo se resuelve con una tienda ni con un agente. Cuando el proceso es tuyo y nadie lo ha empaquetado, se construye a la medida — con el mismo criterio de siempre: primero el diagnóstico, después el código.</p>
+      <div class="grid2">
+        <div class="celda">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18v12H3z"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <h3>Sitios web a medida</h3>
+          <p>Desde cero y sin plantilla: diseño propio, tu marca, velocidad real y listo para posicionar en Google. No es un tema comprado con tus colores encima.</p>
+        </div>
+        <div class="celda">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></div>
+          <h3>Software con IA integrada</h3>
+          <p>Sistemas internos que hacen trabajo real: cotizadores, gestión de obra, inventario, análisis de datos, asistentes que consultan tus propias fuentes y responden con datos tuyos.</p>
+        </div>
+        <div class="celda">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007 0l3-3a5 5 0 00-7-7l-1 1"/><path d="M14 11a5 5 0 00-7 0l-3 3a5 5 0 007 7l1-1"/></svg></div>
+          <h3>Integraciones y automatización</h3>
+          <p>Conectar lo que ya tienes (ERP, pasarela, CRM, hojas de cálculo, WhatsApp) para que la información deje de copiarse a mano de un lado a otro.</p>
+        </div>
+        <div class="celda">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5m0 14h16"/><path d="M8 15l4-5 3 3 4-6"/></svg></div>
+          <h3>Datos y tableros a medida</h3>
+          <p>Medir lo que importa de verdad — no lo que el sistema trae por defecto — y verlo en un tablero hecho para tu operación.</p>
+        </div>
+      </div>
+      <p class="nota">Cotizamos a la medida del alcance real, siempre tras un diagnóstico previo: no fijamos una cifra sin entender a fondo tu proceso. Además, si identificamos que alguna parte de la solución ya existe de forma empaquetada (tienda online, agente virtual, sistema de citas), la aprovechamos para optimizar tu inversión. Asesorarte sobre la opción más eficiente y económica también es parte de nuestro trabajo.</p>
+    </div>
+  </section>
+
+  <section id="proceso">
+      <div class="wrap">
+        <p class="eyebrow">Proceso</p>
+        <h2 style="margin-top:14px;max-width:20ch">De la llamada a la operación</h2>
+        <div class="linea" style="margin-top:38px">
+          <div class="paso"><h4><span class="n">01</span>Diagnóstico · 30 min, gratis</h4><p>Cuánto pierdes hoy en carritos y respuestas lentas, con tus propios números.</p></div>
+          <div class="paso"><h4><span class="n">02</span>Conexión de tu WhatsApp Business</h4><p>Aproximadamente 2 semanas de trámite ante Meta, según sus tiempos de revisión. Te acompaño en todo el proceso.</p></div>
+          <div class="paso"><h4><span class="n">03</span>Implementación</h4><p>De 2 a 4 semanas según los módulos contratados.</p></div>
+          <div class="paso"><h4><span class="n">04</span>Capacitación del equipo</h4><p>Una hora, con el flujo real ya funcionando.</p></div>
+          <div class="paso"><h4><span class="n">05</span>Operación y mejora continua</h4><p>Monitoreo, ajustes e informes mientras el sistema trabaja.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="preguntas">
+          <div class="wrap">
+      <p class="eyebrow">Preguntas frecuentes</p>
+      <h2 style="margin-top:14px;max-width:24ch">Lo que siempre me preguntan antes de empezar</h2>
+      <div class="faq">
+        <details open>
+          <summary>¿Y si el cliente quiere hablar con una persona?</summary>
+          <p>La conversación pasa a tu equipo cuando el caso lo pide: reclamos, casos raros o simplemente cuando el cliente lo pide. La persona recibe el hilo completo, no empieza de cero.</p>
+        </details>
+        <details>
+          <summary>¿Tengo que cambiar mi número de WhatsApp?</summary>
+          <p>Sí, y conviene saberlo desde el principio: el número se migra a la API oficial de Meta (WhatsApp Business Platform). Sigue siendo el mismo número de siempre para tus clientes; lo que cambia es por dónde pasa técnicamente. Es un trámite que se hace una vez.</p>
+        </details>
+        <details>
+          <summary>¿Qué pasa si Meta no aprueba el proceso?</summary>
+          <p>Es poco frecuente si el negocio está formalizado, pero si ocurriera, no cobro la parte del agente y se queda solo la tienda. Prefiero que el riesgo no lo asumas tú en solitario.</p>
+        </details>
+        <details>
+          <summary>¿Los datos y los clientes son míos?</summary>
+          <p>Sí. Cada cliente tiene su propia base de datos — no compartida con otras tiendas — y puedes llevarte la base de leads con su origen de campaña cuando quieras. El sistema no secuestra tu información.</p>
+        </details>
+        <details>
+          <summary>¿Sirve si mi tienda es WooCommerce y no Shopify?</summary>
+          <p>Sí. Lo he trabajado con las dos: Shopify y WooCommerce. Si tienes algo distinto, se define en el diagnóstico.</p>
+        </details>
+        <details>
+          <summary>¿Cuánto tardo en ver resultados?</summary>
+          <p>La tienda y el agente están operando entre 2 y 4 semanas después de arrancar, más el tiempo del trámite de Meta. Los primeros datos comparables aparecen al mes siguiente de estar en producción.</p>
+        </details>
+        <details>
+          <summary>Tengo un negocio con agenda (salón, barbería, consultorio) y no vendo productos ¿sirve igual?</summary>
+          <p>Sí, y es uno de los mejores casos: el agente asigna la cita sobre tu disponibilidad real, confirma, recuerda antes de la fecha y reprograma si el paciente cancela. El cuello de botella de un negocio con agenda casi nunca es el precio: es el teléfono sin contestar y los cupos que se pierden por un olvido.</p>
+        </details>
+        <details>
+          <summary>¿Se conecta con la agenda o el software que ya uso?</summary>
+          <p>Depende del sistema: si tiene API o calendario accesible, se integra; si vive en Excel o en papel, se migra la información y queda en una base propia. Se define en el diagnóstico, antes de cotizar.</p>
+        </details>
+        <details>
+          <summary>¿Hasta cuándo están los precios de lanzamiento?</summary>
+          <p>Hasta el 31 de octubre de 2026. Hay descuento de lanzamiento en la tienda y en el paquete de tienda + agente, y en el agente y la agenda los primeros meses de operación van sin costo firmando contrato anual. Los valores exactos te los doy en la propuesta, según tu alcance.</p>
+        </details>
+        <details>
+          <summary>¿Puedo pagar semestral o anual?</summary>
+          <p>Sí. Semestral: pagas 5 meses y el 6.º va por cuenta nuestra. Anual: pagas 10 y 2 van por cuenta nuestra. En ambos casos el ahorro aplica sobre la operación mensual, no sobre el setup de instalación, y no se suma al descuento de lanzamiento: se elige el que más te convenga.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="cierre" id="contacto">
+    <div class="wrap">
+      <p class="eyebrow">Siguiente paso</p>
+      <h2>Revisamos tu caso con tus números</h2>
+      <p class="sub">30 minutos, sin compromiso. Te digo con franqueza si esto te sirve o no.</p>
+      <div class="row">
+        <a class="btn btn-solid" href="https://wa.me/573137476163?text=Hola%2C%20quiero%20el%20diagn%C3%B3stico%20de%2030%20minutos">Escribir por WhatsApp</a>
+        <a class="btn btn-ghost" href="mailto:contacto@vendible.cloud?subject=Diagn%C3%B3stico%20de%2030%20minutos">contacto@vendible.cloud</a>
+      </div>
+      <div class="contacto">
+        <span>WhatsApp <a href="https://wa.me/573137476163">+57 313 747 6163</a></span>
+        <span>Correo <a href="mailto:contacto@vendible.cloud">contacto@vendible.cloud</a></span>
+        <span>Cali, Colombia</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap pie">
+    <span class="pie-marca"><img src="marca/isotipo.png" alt="">Johan Sarria — arquitectura de software y agentes de IA</span>
+    <span class="mono">vendible.cloud</span>
+  </div>
+</footer>
+
+<!-- ── Botón flotante de WhatsApp + captura de lead ── -->
+<button id="waFlota" aria-label="Hablar por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.5-.6.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.7-.9-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.9-.8 2.1-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.2-.5-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3-.4-4.3-1.2l-.3-.2-3.1.8.8-3.1-.2-.3c-.8-1.3-1.3-2.9-1.3-4.5C3.6 7.4 7.4 3.6 12 3.6S20.4 7.4 20.4 12 16.6 20.2 12 20.2z"/></svg>
+  <span>Cuéntame tu caso</span>
+</button>
+
+<div class="lead-panel" id="leadPanel" hidden>
+  <div class="lead-head">
+    <b>Cuéntame de tu negocio</b>
+    <button type="button" id="leadCerrar" aria-label="Cerrar">×</button>
+  </div>
+  <p class="lead-sub">Déjame tus datos y seguimos por WhatsApp. Te respondo yo, no un robot.</p>
+  <form id="leadForm" novalidate>
+    <label>Nombre<input name="nombre" required autocomplete="name"></label>
+    <label>Tu negocio
+      <select name="negocio" required>
+        <option value="">Elige una opción</option>
+        <option>Tienda o marca de productos</option>
+        <option>Salón de belleza o barbería</option>
+        <option>Consultorio, clínica o estética</option>
+        <option>Taller o servicio técnico</option>
+        <option>Restaurante o comidas</option>
+        <option>Otro negocio</option>
+      </select>
+    </label>
+    <label class="lead-trampa" aria-hidden="true">No llenar este campo
+      <input name="sitio_web" tabindex="-1" autocomplete="off"></label>
+    <label>WhatsApp<input name="whatsapp" required inputmode="tel" autocomplete="tel" placeholder="300 000 0000"></label>
+    <label>Ciudad<input name="ciudad" placeholder="Cali"></label>
+    <label>¿Qué necesitas? <span>(opcional)</span>
+      <textarea name="necesidad" rows="2" placeholder="Vender más por WhatsApp, agendar citas, montar la tienda…"></textarea>
+    </label>
+    <label class="lead-check"><input type="checkbox" name="acepto" required>
+      Autorizo el tratamiento de mis datos para que me contacten (Ley 1581 de 2012).</label>
+    <button type="submit" class="lead-enviar" id="leadEnviar">Enviar y seguir por WhatsApp</button>
+    <p class="lead-nota">Si algo falla, igual te llevo a mi WhatsApp: el contacto nunca se pierde.</p>
+  </form>
+  <div id="leadOk" class="lead-ok" hidden>
+    <b>¡Listo, {nombre}!</b>
+    Abrí WhatsApp con tus datos. Si no se abrió solo,
+    <a id="waRespaldo" href="#" style="color:var(--teal)">toca aquí para seguir la conversación</a>
+    — o escríbeme al +57 313 747 6163.
+  </div>
+</div>
+
+<script>
+(function(){
+  /* ── CONFIGURACIÓN ── Si Supabase no está configurado, el formulario igual
+     funciona: abre WhatsApp con los datos (ningún lead se pierde). */
+  var SUPABASE_URL  = "https://rkshsuehfybneeugemjr.supabase.co";
+  var SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJrc2hzdWVoZnlibmVldWdlbWpyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk3NjU0NzYsImV4cCI6MjEwNTM0MTQ3Nn0.GBydN_cVNpj7XRs2Fp8H49Ds94MEHFZMnenQygCJJIQ";
+  var TABLA         = "leads_vendible";
+  var WHATSAPP      = "573137476163";
+
+  var btn    = document.getElementById('waFlota');
+  var panel  = document.getElementById('leadPanel');
+  var cerrar = document.getElementById('leadCerrar');
+  var form   = document.getElementById('leadForm');
+  var ok     = document.getElementById('leadOk');
+
+  function abrir(){ panel.hidden = false; var f = form.querySelector('[name=nombre]'); if(f) f.focus(); }
+  function cerrarPanel(){ panel.hidden = true; }
+  btn.addEventListener('click', function(){ panel.hidden ? abrir() : cerrarPanel(); });
+  cerrar.addEventListener('click', cerrarPanel);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') cerrarPanel(); });
+
+  function utm(){
+    var p = new URLSearchParams(location.search), o = {};
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'].forEach(function(k){
+      if(p.get(k)) o[k] = p.get(k);
+    });
+    if(document.referrer) o.referrer = document.referrer;
+    return o;
+  }
+
+  function guardar(datos){
+    if(!SUPABASE_URL || !SUPABASE_ANON) return Promise.resolve('sin-bd');
+    var envio = fetch(SUPABASE_URL + '/rest/v1/' + TABLA, {
+      method:'POST',
+      headers:{ 'Content-Type':'application/json', 'apikey':SUPABASE_ANON,
+                'Authorization':'Bearer ' + SUPABASE_ANON, 'Prefer':'return=minimal' },
+      body: JSON.stringify(datos)
+    }).then(function(r){ return r.ok ? 'ok' : 'error-' + r.status; })
+      .catch(function(){ return 'error-red'; });
+    // no bloquea la apertura de WhatsApp más de 3,5 s
+    return Promise.race([envio, new Promise(function(res){ setTimeout(function(){ res('timeout'); }, 3500); })]);
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var d = {};
+    new FormData(form).forEach(function(v,k){ d[k] = ('' + v).trim(); });
+    if(!d.nombre || !d.negocio || !d.whatsapp){ form.reportValidity(); return; }
+    if(!d.acepto){ form.reportValidity(); return; }
+
+    /* Campo trampa: una persona no lo ve ni lo llena. Si viene con algo, es un bot:
+       se le muestra una confirmacion falsa y no se guarda ni se abre WhatsApp. */
+    if((d.sitio_web || '').trim() !== ''){
+      form.hidden = true;
+      ok.hidden = false;
+      ok.querySelector('b').textContent = '¡Listo!';
+      return;
+    }
+
+    var texto = 'Hola, soy ' + d.nombre + ' y tengo ' + d.negocio.toLowerCase()
+              + (d.ciudad ? ' en ' + d.ciudad : '') + '. '
+              + (d.necesidad ? d.necesidad + '. ' : '')
+              + 'Quiero saber qué me sirve y cuánto vale.';
+    var enlace = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(texto);
+
+    /* WhatsApp PRIMERO y sincrónico: dentro del gesto del usuario el navegador no
+       puede bloquearlo, y ninguna red lenta lo retrasa. La base de datos se llena
+       en paralelo: si falla, el contacto con el cliente ya está hecho. */
+    var ventana = null;
+    try { ventana = window.open(enlace, '_blank'); } catch (err) { ventana = null; }
+
+    guardar({
+      nombre: d.nombre, negocio: d.negocio, whatsapp: d.whatsapp,
+      ciudad: d.ciudad || null, necesidad: d.necesidad || null,
+      trampa: null,            /* el trigger del servidor vuelve a verificar */
+      origen: 'landing', utm: utm(), pagina: location.href
+    }).then(function(res){ console.log('lead:', res); });
+
+    form.hidden = true;
+    ok.hidden = false;
+    ok.querySelector('b').textContent = '¡Listo, ' + d.nombre + '!';
+    var respaldo = document.getElementById('waRespaldo');
+    respaldo.href = enlace;
+    respaldo.hidden = false;
+    if (!ventana) { respaldo.setAttribute('data-bloqueada', 'si'); }
+  });
+})();
+</script>
+
+</body>
+</html>
