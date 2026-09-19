@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+  @font-face{font-family:InterVar;src:url("fonts/inter.woff2") format("woff2");font-weight:100 900;font-display:swap}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#08090A;font-family:InterVar,system-ui,sans-serif;color:#F2F5F6;width:1200px}
+  .leyenda{font-family:ui-monospace,monospace;font-size:11px;color:#6E7B85;letter-spacing:.08em;
+    text-transform:uppercase;padding:16px 40px 6px}
+  .caja{border-bottom:1px solid #1B1F24}
+  /* ── como quedaria el header del sitio ── */
+  header{display:flex;align-items:center;justify-content:space-between;padding:15px 40px}
+  .marca{display:flex;align-items:center;gap:9px}
+  .marca img{width:32px;height:32px;display:block}
+  .marca b{font-size:20px;font-weight:650;letter-spacing:-.03em}
+  nav{display:flex;gap:26px;font-size:13.5px;color:#9BA6AE}
+  .boton{background:#2BE3C0;color:#04120F;font-size:13.5px;font-weight:650;padding:9px 16px;border-radius:8px}
+  /* ── pie ── */
+  footer{display:flex;align-items:center;gap:22px;padding:22px 40px}
+  footer img{width:190px}
+  footer p{font-size:12.5px;color:#8A959C;line-height:1.6}
+  /* ── pestana del navegador ── */
+  .tabs{display:flex;gap:6px;align-items:flex-end;padding:14px 40px 0}
+  .tab{background:#1A1E23;border-radius:8px 8px 0 0;padding:8px 14px;display:flex;align-items:center;gap:8px;
+    font-size:12.5px;color:#C9D1D6;min-width:200px}
+  .tab img{width:16px;height:16px}
+  .tab.inactiva{background:#12151A;color:#7C878F}
+</style></head>
+<body>
+  <div class="caja">
+    <div class="leyenda">1 · header del sitio (isotipo + texto en la tipografía del sitio)</div>
+    <header>
+      <div class="marca"><img src="icono-header-128.png" alt=""><b>Vendible</b></div>
+      <nav><span>El sistema</span><span>Con citas</span><span>Planes</span><span>A medida</span><span>Preguntas</span></nav>
+      <div class="boton">Cuéntame tu caso</div>
+    </header>
+  </div>
+
+  <div class="caja">
+    <div class="leyenda">2 · pie: isotipo + texto vivo (el lockup con bajada queda para impresos y la imagen de compartir)</div>
+    <footer>
+      <div class="marca"><img src="icono-header-128.png" alt=""><b>Vendible</b></div>
+      <p><span style="color:#E8EDEF">Johan Sarria</span><br>Arquitectura de software y agentes de IA<br>Cali, Colombia · contacto@vendible.cloud</p>
+    </footer>
+  </div>
+
+  <div class="caja" style="border-bottom:0">
+    <div class="leyenda">3 · favicon a tamaño real (16 px): el mismo diseno, glifo al 78% vs al 88%</div>
+    <div class="tabs">
+      <div class="tab"><img src="favicon-placa-88-32.png" alt="">Placa, glifo 88%</div>
+      <div class="tab inactiva"><img src="favicon-placa-88-32.png" alt="">Placa, glifo 88%</div>
+    </div>
+    <div style="height:40px;background:#12151A"></div>
+  </div>
+</body></html>
