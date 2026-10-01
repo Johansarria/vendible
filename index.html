@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="alternate" hreflang="es-CO" href="https://vendible.cloud/">
 <link rel="alternate" hreflang="es" href="https://vendible.cloud/">
-<title>Vendible — Agentes de IA que venden por WhatsApp | Colombia</title>
-<meta name="description" content="Agentes de IA para WhatsApp: atención 24/7, recuperación de carritos, agenda de citas para negocios con cita previa, tiendas en Shopify, WooCommerce o Dropi, y desarrollo de web y software a medida con IA. Caso real en producción: 71,7 % de los pedidos entran por WhatsApp.">
+<title>Agente de IA para WhatsApp E-commerce | Vendible Colombia</title>
+<meta name="description" content="Agente de IA en WhatsApp para e-commerce: inventario real, carritos y guías. Caso real AUREN (aurenstore.store): 67,3 % de pedidos por WhatsApp.">
 <link rel="canonical" href="https://vendible.cloud/">
 <meta name="theme-color" content="#08090A">
 <meta name="author" content="Johan Sarria">
@@ -20,15 +20,15 @@
 <meta property="og:locale" content="es_CO">
 <meta property="og:site_name" content="Vendible">
 <meta property="og:url" content="https://vendible.cloud/">
-<meta property="og:title" content="Agentes de IA que venden por WhatsApp — Vendible">
-<meta property="og:description" content="Atiende 24/7, consulta inventario real, recupera carritos abandonados y avisa las guías de envío. Caso real en producción en Colombia.">
+<meta property="og:title" content="Agente de IA para WhatsApp E-commerce | Vendible">
+<meta property="og:description" content="Agente de IA para WhatsApp conectado a tu inventario real en Shopify o WooCommerce. Atención 24/7, recuperación de carritos y guías de envío. Caso real: AUREN (aurenstore.store).">
 <meta property="og:image" content="https://vendible.cloud/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:updated_time" content="2026-09-19T10:00:00-05:00">
+<meta property="og:updated_time" content="2026-10-01T10:00:00-05:00">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Agentes de IA que venden por WhatsApp — Vendible">
-<meta name="twitter:description" content="Caso real en producción: 71,7 % de los pedidos entran por WhatsApp. Agente con inventario real y recuperación de carritos.">
+<meta name="twitter:title" content="Agente de IA para WhatsApp E-commerce | Vendible">
+<meta name="twitter:description" content="Agente de IA para WhatsApp conectado a tu inventario real. Atención 24/7, recuperación de carritos y guías. Caso real AUREN (aurenstore.store): 67,3 % de pedidos por WhatsApp.">
 <meta name="twitter:image" content="https://vendible.cloud/og.png">
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -72,8 +72,14 @@
   .nav{display:flex;align-items:center;height:58px;gap:30px}
   .mark{display:flex;align-items:center;gap:8px;font-weight:650;font-size:16px;letter-spacing:-.02em;text-decoration:none}
   .nav nav{margin-left:auto;display:flex;gap:24px;font-size:14px;color:var(--fg-2)}
-  .nav nav a{text-decoration:none;transition:color .15s}
+  .nav nav a{text-decoration:none;transition:color .15s;white-space:nowrap}
   .nav nav a:hover{color:var(--fg)}
+  .menu-btn{display:none;margin-left:auto;flex:0 0 auto;align-items:center;justify-content:center;
+    width:44px;height:40px;padding:0;background:transparent;border:1px solid var(--line);
+    border-radius:9px;color:var(--fg);cursor:pointer}
+  .menu-btn:hover{border-color:var(--fg-3)}
+  .menu-btn svg{width:20px;height:20px}
+  .nav nav .nav-cta-movil{display:none}
   .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:8px;font-size:14.5px;
        font-weight:550;text-decoration:none;border:1px solid transparent;transition:.16s;white-space:nowrap}
   .btn:active{transform:translateY(1px)}
@@ -237,8 +243,33 @@
   .pie-marca img{height:24px;width:auto;display:block}
   .pie .mono{color:var(--fg-2)}
 
+  @media(max-width:1180px){
+    .nav{gap:20px}
+    .nav nav{gap:16px;font-size:13.5px}
+  }
+  @media(max-width:1040px){
+    .nav{gap:16px}
+    .nav nav{gap:11px;font-size:13px}
+  }
+  @media(max-width:960px){
+    .nav nav{gap:9px;font-size:12.5px}
+  }
+
+  /* --- menú móvil: la barra completa no cabe, se abre como panel --- */
   @media(max-width:860px){
-    .nav nav{display:none}
+    .nav nav{position:fixed;top:59px;left:0;right:0;display:flex;flex-direction:column;gap:0;
+      margin:0;padding:6px 28px 18px;font-size:15.5px;background:rgba(8,9,10,.97);
+      backdrop-filter:blur(14px) saturate(160%);border-bottom:1px solid var(--line);
+      max-height:calc(100vh - 59px);overflow:auto;
+      opacity:0;visibility:hidden;transform:translateY(-6px);
+            transition:opacity .15s ease,transform .15s ease,visibility 0s linear .15s}
+          .nav nav.abierto{opacity:1;visibility:visible;transform:none;transition-delay:0s,0s,0s}
+    .nav nav a{padding:13px 0;border-bottom:1px solid var(--line-soft)}
+    .nav nav a:last-child{border-bottom:0}
+    .nav nav a.nav-cta-movil{border:0;border-radius:8px;padding:13px 20px;margin-top:14px}
+    .nav-cta{display:none}
+    .nav nav .nav-cta-movil{display:inline-flex;justify-content:center}
+    .menu-btn{display:inline-flex}
     .mock-body{grid-template-columns:1fr}
     .chat{border-right:0;border-bottom:1px solid var(--line-soft)}
     .fila{grid-template-columns:1.3fr 1fr}
@@ -297,24 +328,44 @@
   "@context":"https://schema.org",
   "@graph":[
     {
-      "@type":"ProfessionalService",
+      "@type":"Organization",
       "@id":"https://vendible.cloud/#organization",
       "name":"Vendible",
       "description":"Agentes de IA para WhatsApp integrados al inventario real de tiendas en Colombia: atención 24/7, recuperación de carritos abandonados y notificación de guías de envío.",
       "url":"https://vendible.cloud/",
       "email":"contacto@vendible.cloud",
-      "telephone":"+573****6163",
+      "telephone":"+573016532892",
       "image":"https://vendible.cloud/og.png",
       "founder":{"@type":"Person","name":"Johan Sarria","jobTitle":"Arquitectura de software y agentes de IA"},
       "address":{"@type":"PostalAddress","addressLocality":"Cali","addressRegion":"Valle del Cauca","addressCountry":"CO"},
       "areaServed":{"@type":"Country","name":"Colombia"},
       "knowsLanguage":["es"],
-      "makesOffer":[
-        {"@type":"Offer","itemOffered":{"@type":"Service","name":"Tienda lista y vendiendo","description":"Tienda en Shopify, WooCommerce o conectada a Dropi: catálogo, pagos, envíos y botón de WhatsApp."}},
-        {"@type":"Offer","itemOffered":{"@type":"Service","name":"Agente de IA para WhatsApp","description":"Atención 24/7, recuperación de carritos abandonados y notificación de guías de envío, sobre la tienda del cliente."}},
-        {"@type":"Offer","itemOffered":{"@type":"Service","name":"Agenda y citas","description":"Agendamiento sobre la disponibilidad real, confirmación, recordatorios y reprogramación por WhatsApp, para negocios con cita previa."}},
-        {"@type":"Offer","itemOffered":{"@type":"Service","name":"Sitios web y software a medida","description":"Desarrollo desde cero con IA integrada: sitios web, sistemas internos, integraciones y tableros."}}
+      "sameAs":[
+        "https://www.linkedin.com/company/vendiblecloud/",
+        "https://www.instagram.com/vendiblecloud/"
       ]
+    },
+    {
+      "@type":"SoftwareApplication",
+      "@id":"https://vendible.cloud/#software",
+      "name":"Agente de IA para WhatsApp E-commerce de Vendible",
+      "applicationCategory":"BusinessApplication",
+      "operatingSystem":"Cloud / Web",
+      "url":"https://vendible.cloud/",
+      "image":"https://vendible.cloud/og.png",
+      "description":"Agente de IA para WhatsApp conectado al inventario real de Shopify y WooCommerce. Atención 24/7, recuperación de carritos abandonados y guías de envío automáticas. Caso real en producción: AUREN (aurenstore.store).",
+      "offers":{
+        "@type":"AggregateOffer",
+        "priceCurrency":"COP",
+        "offerCount":"4",
+        "offers":[
+          {"@type":"Offer","name":"Tienda lista y vendiendo","description":"Tienda en Shopify, WooCommerce o conectada a Dropi: catálogo, pagos, envíos y botón de WhatsApp."},
+          {"@type":"Offer","name":"Agente de IA para WhatsApp","description":"Atención 24/7, recuperación de carritos abandonados y notificación de guías de envío, sobre la tienda del cliente."},
+          {"@type":"Offer","name":"Agenda y citas","description":"Agendamiento sobre la disponibilidad real, confirmación, recordatorios y reprogramación por WhatsApp, para negocios con cita previa."},
+          {"@type":"Offer","name":"Sitios web y software a medida","description":"Desarrollo desde cero con IA integrada: sitios web, sistemas internos, integraciones y tableros."}
+        ]
+      },
+      "author":{"@type":"Organization","name":"Vendible","@id":"https://vendible.cloud/#organization"}
     },
     {
       "@type":"WebSite",
@@ -327,15 +378,17 @@
       "@type":"FAQPage",
       "@id":"https://vendible.cloud/#faq",
       "mainEntity":[
+        {"@type":"Question","name":"¿El agente también contesta Instagram o Messenger?","acceptedAnswer":{"@type":"Answer","text":"Hoy el agente atiende el WhatsApp oficial, que es donde está el volumen de tu operación y donde está medido el caso. Instagram DM y Messenger son el siguiente módulo: se construyen sobre la misma plataforma de Meta, con permisos y revisión aparte, y se cotizan como fase 2. Lo decimos así a propósito: preferimos no anunciar un canal que todavía no atendemos."}},
+        {"@type":"Question","name":"¿Ustedes manejan mi pauta en Instagram y Facebook?","acceptedAnswer":{"@type":"Answer","text":"No. La publicidad y los perfiles son tuyos: los gestionas tú, tu equipo o tu trafikero. Nosotros construimos el destino —la tienda, el agente y los datos— y no cobramos por pauta ni la intermediamos. Lo que sí hacemos es dejar registrado de dónde vino cada cliente, para que esa pauta se pueda medir."}},
         {"@type":"Question","name":"¿Y si el cliente quiere hablar con una persona?","acceptedAnswer":{"@type":"Answer","text":"La conversación pasa a tu equipo cuando el caso lo pide: reclamos, casos raros o simplemente cuando el cliente lo pide. La persona recibe el hilo completo, no empieza de cero."}},
         {"@type":"Question","name":"¿Tengo que cambiar mi número de WhatsApp?","acceptedAnswer":{"@type":"Answer","text":"Sí, y conviene saberlo desde el principio: el número se migra a la API oficial de Meta (WhatsApp Business Platform). Sigue siendo el mismo número de siempre para tus clientes; lo que cambia es por dónde pasa técnicamente. Es un trámite que se hace una vez."}},
         {"@type":"Question","name":"¿Qué pasa si Meta no aprueba el proceso?","acceptedAnswer":{"@type":"Answer","text":"Es poco frecuente si el negocio está formalizado, pero si ocurriera, no cobro la parte del agente y se queda solo la tienda. Prefiero que el riesgo no lo asumas tú en solitario."}},
         {"@type":"Question","name":"¿Los datos y los clientes son míos?","acceptedAnswer":{"@type":"Answer","text":"Sí. Cada cliente tiene su propia base de datos — no compartida con otras tiendas — y puedes llevarte la base de leads con su origen de campaña cuando quieras. El sistema no secuestra tu información."}},
         {"@type":"Question","name":"¿Sirve si mi tienda es WooCommerce y no Shopify?","acceptedAnswer":{"@type":"Answer","text":"Sí. Lo he trabajado con las dos: Shopify y WooCommerce. Si tienes algo distinto, se define en el diagnóstico."}},
         {"@type":"Question","name":"¿Cuánto tardo en ver resultados?","acceptedAnswer":{"@type":"Answer","text":"La tienda y el agente están operando entre 2 y 4 semanas después de arrancar, más el tiempo del trámite de Meta. Los primeros datos comparables aparecen al mes siguiente de estar en producción."}},
-        {"@type":"Question","name":"Tengo un negocio con agenda y no vendo productos ¿sirve igual?","acceptedAnswer":{"@type":"Answer","text":"Sí, y es uno de los mejores casos: el agente asigna la cita sobre tu disponibilidad real, confirma, recuerda antes de la fecha y reprograma si el paciente cancela. El cuello de botella de un negocio con agenda casi nunca es el precio: es el teléfono sin contestar y los cupos que se pierden por un olvido."}},
+        {"@type":"Question","name":"Tengo un negocio con agenda (salón, barbería, consultorio) y no vendo productos ¿sirve igual?","acceptedAnswer":{"@type":"Answer","text":"Sí, y es uno de los mejores casos: el agente asigna la cita sobre tu disponibilidad real, confirma, recuerda antes de la fecha y reprograma si el paciente cancela. El cuello de botella de un negocio con agenda casi nunca es el precio: es el teléfono sin contestar y los cupos que se pierden por un olvido."}},
         {"@type":"Question","name":"¿Se conecta con la agenda o el software que ya uso?","acceptedAnswer":{"@type":"Answer","text":"Depende del sistema: si tiene API o calendario accesible, se integra; si vive en Excel o en papel, se migra la información y queda en una base propia. Se define en el diagnóstico, antes de cotizar."}},
-        {"@type":"Question","name":"¿Hasta cuándo están los precios de lanzamiento?","acceptedAnswer":{"@type":"Answer","text":"Hasta el 31 de octubre de 2026. Hay descuento de lanzamiento en la tienda y en el paquete de tienda + agente, y en el agente y la agenda los primeros meses de operación van sin costo firmando contrato anual. Los valores exactos te los doy en la propuesta, según tu alcance."}},
+        {"@type":"Question","name":"¿Hasta cuándo están los precios de lanzamiento?","acceptedAnswer":{"@type":"Answer","text":"Hasta el 30 de noviembre de 2026. Firmando contrato anual en el agente o la agenda, los primeros 3 meses de operación no se cobran; y en la tienda y en el paquete de tienda + agente se mantiene el valor de lanzamiento hasta esa fecha. Los valores exactos te los doy en la propuesta, según tu alcance."}},
         {"@type":"Question","name":"¿Puedo pagar semestral o anual?","acceptedAnswer":{"@type":"Answer","text":"Sí. Semestral: pagas 5 meses y el 6.º va por cuenta nuestra. Anual: pagas 10 y 2 van por cuenta nuestra. En ambos casos el ahorro aplica sobre la operación mensual, no sobre el setup de instalación, y no se suma al descuento de lanzamiento: se elige el que más te convenga."}}
       ]
     }
@@ -349,29 +402,51 @@
 <header>
   <div class="wrap nav">
     <a class="mark" href="#top">
-      <img src="marca/isotipo.png" alt="" style="display:block;height:29px;width:auto;flex:0 0 auto">
+      <img src="marca/isotipo.webp" alt="" style="display:block;height:29px;width:auto;flex:0 0 auto">
       Vendible
     </a>
-    <nav>
+    <nav id="menuPrincipal">
       <a href="#problema">Problema</a>
       <a href="#sistema">El sistema</a>
+      <a href="#canales">Canales</a>
       <a href="#resultados">Resultados</a>
-      <a href="#citas">Con citas</a>
+      <a href="#casos">Casos</a>
+      <a href="/precios/">Precios</a>
       <a href="#planes">Planes</a>
-      <a href="#amedida">A medida</a>
       <a href="#preguntas">Preguntas</a>
+      <a class="btn btn-solid nav-cta-movil" href="https://wa.me/573016532892?text=Hola%2C%20quiero%20el%20diagn%C3%B3stico%20de%2030%20minutos">Diagnóstico gratis</a>
     </nav>
-    <a class="btn btn-solid btn-sm" href="https://wa.me/573016532892?text=Hola%2C%20quiero%20el%20diagn%C3%B3stico%20de%2030%20minutos">Diagnóstico gratis</a>
+    <a class="btn btn-solid btn-sm nav-cta" href="https://wa.me/573016532892?text=Hola%2C%20quiero%20el%20diagn%C3%B3stico%20de%2030%20minutos">Diagnóstico gratis</a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menuPrincipal" aria-label="Abrir menú">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
   </div>
 </header>
+
+<script>
+(function(){
+  var btn = document.getElementById('menuBtn');
+  var nav = document.getElementById('menuPrincipal');
+  if(!btn || !nav) return;
+  function pintar(abierto){
+    nav.classList.toggle('abierto', abierto);
+    btn.setAttribute('aria-expanded', abierto ? 'true' : 'false');
+    btn.setAttribute('aria-label', abierto ? 'Cerrar menú' : 'Abrir menú');
+  }
+  btn.addEventListener('click', function(){ pintar(!nav.classList.contains('abierto')); });
+  nav.addEventListener('click', function(e){ if(e.target.closest('a')) pintar(false); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') pintar(false); });
+  window.addEventListener('resize', function(){ if(window.innerWidth > 860) pintar(false); });
+})();
+</script>
 
 <main id="top">
 
   <section class="hero" style="border-top:0">
     <div class="wrap">
       <span class="pill"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="color:var(--teal);flex:0 0 13px"><path d="M20 6L9 17l-5-5"/></svg>Sin cambiar tu número ni tu tienda</span>
-      <h1>El agente que vende en tu <em>WhatsApp oficial</em></h1>
-      <p class="sub">Atiende, consulta tu inventario real, recupera los carritos que se pierden y avisa las guías de envío. Observa lo que pasa en tu negocio y ejecuta acciones — no responde con menús fijos.</p>
+      <h1>Agente de IA para <em>WhatsApp E-commerce</em>: automatiza ventas y recupera carritos</h1>
+      <p class="sub">Atiende 24/7 sobre tu inventario real, recupera los carritos que se pierden y avisa las guías de envío. No responde con menús fijos — vende y ejecuta acciones.</p>
       <p class="sub" style="margin-top:14px;font-size:17px">¿Vendes productos o agendas citas? <strong style="color:var(--fg)">El mismo agente hace las dos cosas</strong>: <a href="#citas" style="color:var(--teal);text-decoration:none;border-bottom:1px solid var(--teal)">míralo si tu negocio trabaja con agenda</a>.</p>
       <div class="row">
         <a class="btn btn-solid" href="https://wa.me/573016532892?text=Hola%2C%20quiero%20el%20diagn%C3%B3stico%20de%2030%20minutos">Agendar diagnóstico de 30 min</a>
@@ -386,7 +461,7 @@
         <div class="mock-body">
           <div class="chat">
             <div class="burbuja cli b1">Buenas, ¿tienen la referencia 2042 en talla 42?<span class="hora">14:02</span></div>
-            <div class="burbuja bot b2">¡Hola! Sí, quedan 3 en 42. Está en $186.000 y hay promo de temporada. ¿Te la aparto?<span class="hora">14:02</span></div>
+            <div class="burbuja bot b2">¡Hola! Sí, quedan 3 en 42. Está en $129.900 y hay promo de temporada. ¿Te la aparto?<span class="hora">14:02</span></div>
             <div class="burbuja cli b3">¿y en 43?<span class="hora">14:03</span></div>
             <div class="escr b4"><i></i><i></i><i></i></div>
             <div class="burbuja bot b5">En 43 quedan 2. ¿Cuál prefieres que te separe?<span class="hora">14:03</span></div>
@@ -396,10 +471,10 @@
           </div>
           <div class="log">
             <h4>Eventos del sistema</h4>
-            <div class="ev"><time>14:02</time><span><b>cart.abandoned</b><br>carrito #4821 · $186.000</span></div>
+            <div class="ev"><time>14:02</time><span><b>cart.abandoned</b><br>carrito #4821 · $129.900</span></div>
             <div class="ev"><time>14:03</time><span><b>escalera / 1</b><br>plantilla utility enviada</span></div>
             <div class="ev"><time>14:19</time><span><b>link.click</b><br>checkout abierto</span></div>
-            <div class="ev"><time>14:26</time><span><b class="t2">order.paid</b><br>pedido #4822 · $186.000</span></div>
+            <div class="ev"><time>14:26</time><span><b class="t2">order.paid</b><br>pedido #4822 · $129.900</span></div>
             <div class="rec">↳ recuperado en 24 min · sin intervención humana</div>
           </div>
         </div>
@@ -411,7 +486,7 @@
   <section id="problema">
     <div class="wrap">
       <p class="eyebrow">El problema</p>
-      <h2 style="margin-top:14px;max-width:20ch">Cada mensaje sin responder es una venta que se va</h2>
+      <h2 style="margin-top:14px;max-width:22ch">Adiós a los menús fijos: IA conversacional conectada a tu inventario real</h2>
       <div class="xy">
         <div>
           <h4>Lo que pasa hoy</h4>
@@ -438,8 +513,8 @@
   <section id="sistema">
     <div class="wrap">
       <p class="eyebrow">El sistema</p>
-      <h2 style="margin-top:14px;max-width:24ch">No es un chatbot. Es una capa que opera tu tienda</h2>
-      <p style="margin-top:16px;max-width:64ch">Se conecta a tu tienda (Shopify o WooCommerce) y trabaja sobre datos reales: inventario, pedidos, envíos y clientes.</p>
+      <h2 style="margin-top:14px;max-width:24ch">Sincronización real con Shopify y WooCommerce + recuperación de carritos por WhatsApp</h2>
+      <p style="margin-top:16px;max-width:64ch">Se conecta a tu tienda (Shopify o WooCommerce) y trabaja sobre datos reales: inventario, pedidos, envíos y clientes. Cada función responde a un problema concreto de tu operación.</p>
       <div class="grid2">
         <div class="celda">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
@@ -448,17 +523,22 @@
         </div>
         <div class="celda">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h10M4 17h7"/></svg></div>
-          <h3>Stock y precios en vivo</h3>
+          <h3>Sincronización de inventario real con Shopify y WooCommerce</h3>
           <p>Consulta tu inventario antes de prometer. Nunca inventa disponibilidad ni precios.</p>
         </div>
         <div class="celda">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18v12H3z"/><path d="M3 10h18"/></svg></div>
-          <h3>Recuperación de carritos</h3>
-          <p>Escalera de descuentos programada, disparada por el evento del carrito y no por una persona.</p>
+          <h3>Recuperación inteligente de carritos abandonados por WhatsApp</h3>
+          <p>Escalera programada que primero recuerda y solo después incentiva. Si el abandono fue al pagar, ofrece otro medio de pago en vez de regalar margen.</p>
+        </div>
+        <div class="celda">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12a8 8 0 10-3 6.2"/><path d="M20 6v6h-6"/></svg></div>
+          <h3>Reposición antes de que se le acabe</h3>
+          <p>Con el historial de compras estima cuándo se le va a terminar y le escribe unos días antes, con el producto ya elegido.</p>
         </div>
         <div class="celda">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7l9 6 9-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg></div>
-          <h3>Guías de envío automáticas</h3>
+          <h3>Envío automático de guías de rastreo y posventa</h3>
           <p>El cliente recibe su guía en el instante del despacho. Se acaban los "¿ya salió mi pedido?".</p>
         </div>
         <div class="celda">
@@ -475,17 +555,84 @@
     </div>
   </section>
 
+
+  <section id="canales">
+    <div class="wrap">
+      <p class="eyebrow">De dónde llega tu cliente</p>
+      <h2 style="margin-top:14px;max-width:26ch">Instagram, Facebook, la web y la pauta: todo desemboca en un solo hilo</h2>
+      <p style="margin-top:16px;max-width:66ch">Tu cliente llega por donde sea. Lo que cambia con Vendible es <b>el destino</b>: la tienda, donde puede comprar directo, y el WhatsApp oficial, donde el agente atiende con tu inventario real. Cada pedido queda con su origen, así que la pauta se puede medir.</p>
+      <div class="grid2">
+        <div class="celda">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8"/></svg></div>
+          <h3>Instagram y Facebook</h3>
+          <p>Publican y llevan a la tienda o al chat. Los perfiles y la pauta los manejas tú, tu equipo o tu trafikero: <b>no gestionamos ni cobramos publicidad</b>.</p>
+        </div>
+        <div class="celda">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20"/></svg></div>
+          <h3>La web de tu tienda</h3>
+          <p>Compra directa, sin pasar por el chat. El pedido entra a la misma base, con el mismo origen y las mismas reglas de datos.</p>
+        </div>
+        <div class="celda">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+          <h3>El WhatsApp oficial</h3>
+          <p>Es donde <b>atiende el agente</b> 24/7: stock real, carritos, guías y traspaso a una persona del equipo cuando hace falta. Un solo hilo en vez de conversaciones dispersas.</p>
+        </div>
+        <div class="celda">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg></div>
+          <h3>¿Y contestar Instagram o Messenger?</h3>
+          <p>Hoy el agente atiende WhatsApp; <b>Instagram DM y Messenger son el siguiente módulo</b>, sobre la misma plataforma de Meta. Lo decimos así a propósito: no anunciamos un canal que todavía no atendemos.</p>
+        </div>
+      </div>
+      <p class="note" style="margin-top:14px">Los canales de entrada alimentan la tienda y el chat; el agente conversa en el WhatsApp oficial. La publicidad y los perfiles no están en nuestro alcance.</p>
+    </div>
+  </section>
+
   <section id="resultados">
     <div class="wrap">
       <p class="eyebrow">Resultados medidos</p>
-      <h2 style="margin-top:14px">Una tienda real operando hoy</h2>
+      <h2 style="margin-top:14px">AUREN · <a href="https://aurenstore.store" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none;border-bottom:1px solid var(--teal)">aurenstore.store</a></h2>
       <div class="kpis">
-        <div class="kpi"><b>71,7 %</b><span>de los pedidos entran por WhatsApp</span></div>
-        <div class="kpi"><b>18 → 55 %</b><span>conversión del clic a pedido en un mes</span></div>
-        <div class="kpi"><b>90</b><span>clientes en base propia, con origen</span></div>
-        <div class="kpi"><b>$186.000</b><span>ticket promedio</span></div>
+        <div class="kpi"><b>$10.475.000</b><span>facturado en la ventana (59 pedidos)</span></div>
+        <div class="kpi"><b>67,3 %</b><span>de los pedidos pasan por el canal de WhatsApp (corte 21-sep)</span></div>
+        <div class="kpi"><b>119</b><span>clientes en base propia, con su origen (y 46 leads)</span></div>
+        <div class="kpi"><b>$177.542</b><span>ticket promedio de la ventana</span></div>
       </div>
-      <p class="nota">medición agosto–septiembre 2026 sobre la operación de una tienda real, con período y definición explícitos.</p>
+      <p class="nota">medición 1-ago → 30-sep-2026 sobre la operación de AUREN, tienda de calzado en Colombia (Shopify), con ventana y regla explícitas. En esa ventana también entró pauta pagada de un tercero: las cifras no se atribuyen al sistema. <a href="/casos/auren/" style="color:var(--teal);text-decoration:none;border-bottom:1px solid var(--teal)">Ver el caso completo</a>.</p>
+    </div>
+  </section>
+
+  <section id="casos">
+    <div class="wrap">
+      <p class="eyebrow">Casos</p>
+      <h2 style="margin-top:14px;max-width:24ch">Míralo por tu caso concreto</h2>
+      <p style="margin-top:16px;max-width:64ch">Cada plataforma y cada problema tienen su propia página, con lo que cambia y lo que no. Y el <a href="/casos/auren/" style="color:var(--teal);text-decoration:none;border-bottom:1px solid var(--teal)">caso real medido</a> está completo, con su método y sus límites.</p>
+      <div class="grid2">
+        <a class="celda" href="/casos/auren/" style="text-decoration:none;display:block">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-5 4 3 5-7"/></svg></div>
+          <h3 style="color:var(--teal)">Caso real: AUREN · aurenstore.store →</h3>
+          <p>Los números medidos, cómo se midió cada uno y qué no se puede atribuir al sistema.</p>
+        </a>
+        <a class="celda" href="/integracion/shopify/" style="text-decoration:none;display:block">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20"/></svg></div>
+          <h3 style="color:var(--teal)">Agente de WhatsApp para Shopify →</h3>
+          <p>Si tu tienda está en Shopify: stock sincronizado por API, carritos recuperados y guías de envío automáticas.</p>
+        </a>
+        <a class="celda" href="/integracion/woocommerce/" style="text-decoration:none;display:block">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h10M4 17h7"/></svg></div>
+          <h3 style="color:var(--teal)">Automatizar stock de WooCommerce →</h3>
+          <p>Si estás en WooCommerce o conectado a Dropi: inventario real y posventa, sin instalar un solo plugin nuevo.</p>
+        </a>
+        <a class="celda" href="/casos-de-uso/recuperacion-carritos/" style="text-decoration:none;display:block">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.7 11.4a2 2 0 002 1.6h8.5a2 2 0 002-1.6L22 7H6"/></svg></div>
+          <h3 style="color:var(--teal)">Recuperación de carritos abandonados →</h3>
+          <p>Cómo se recupera un carrito paso a paso, minuto a minuto, sin que nadie lo persiga a mano.</p>
+        </a>
+        <a class="celda" href="/casos-de-uso/visibilidad-ia/" style="text-decoration:none;display:block">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2"/></svg></div>
+          <h3 style="color:var(--teal)">Visibilidad en IA: que te encuentren →</h3>
+          <p>Que tu negocio aparezca cuando le preguntan a ChatGPT, Gemini o Perplexity. Servicio suelto, sin el agente.</p>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -538,16 +685,17 @@
       <div class="tabla dos">
         <div class="fila cab"><div>Plan</div><div>Qué incluye</div></div>
         <div class="fila"><div class="nom">Tienda</div><div>Tienda lista y vendiendo en <strong style="color:var(--fg-2)">Shopify, WooCommerce o conectada a Dropi</strong>: catálogo, pagos, envíos y botón de WhatsApp.</div></div>
-        <div class="fila"><div class="nom">Agente</div><div>Agente 24/7 + recuperación de carritos + guías de envío, sobre tu tienda actual.</div></div>
+        <div class="fila"><div class="nom">Agente</div><div>Agente 24/7 + recuperación de carritos entendiendo <strong style="color:var(--fg-2)">por qué</strong> se abandonaron + aviso de reposición antes de que se le acabe + guías de envío, sobre tu tienda actual.</div></div>
         <div class="fila destacada"><div class="nom">Tienda + Agente</div><div>Los dos como un solo sistema: la tienda que captura y el agente que vende y recupera.</div></div>
         <div class="fila"><div class="nom">Agente + Agenda<span class="chip">negocios con agenda</span></div><div>Asigna citas sobre tu disponibilidad, confirma, recuerda y reprograma.</div></div>
         <div class="fila"><div class="nom">Ecosistema completo</div><div>Todo lo anterior + stock en vivo, métricas, canal de bodega y migración de datos.</div></div>
+        <div class="fila"><div class="nom">Visibilidad en IA<span class="chip">se puede tomar solo</span></div><div>Que tu negocio aparezca cuando le preguntan a ChatGPT, Gemini o Perplexity por lo que vendes. <strong style="color:var(--fg-2)">No requiere el agente.</strong></div></div>
       </div>
-      <p class="nota">Los valores no se publican: cada negocio necesita un alcance distinto y prefiero no venderte un paquete que no te sirva. Se entregan en la propuesta, después del diagnóstico. <a href="#contacto" style="color:var(--teal);text-decoration:none;border-bottom:1px solid var(--teal)">Cuéntame tu caso</a>.</p>
+      <p class="nota">Los valores no se publican: cada negocio necesita un alcance distinto y prefiero no venderte un paquete que no te sirva. Se entregan en la propuesta, después del diagnóstico. <a href="/precios/" style="color:var(--teal);text-decoration:none;border-bottom:1px solid var(--teal)">Te explico cómo se cotiza</a> · <a href="#contacto" style="color:var(--teal);text-decoration:none;border-bottom:1px solid var(--teal)">Cuéntame tu caso</a>.</p>
       <div class="promo">
-        <b>Descuentos de lanzamiento, vigentes hasta el 31 de octubre de 2026.</b>
-        La tienda y el paquete de tienda + agente tienen descuento de lanzamiento, y en el agente y la agenda los primeros meses de operación
-        van sin costo firmando contrato anual. Cuéntame tu caso y te digo exactamente qué te aplica.
+        <b>Beneficios de lanzamiento, hasta el 30 de noviembre de 2026.</b>
+        Firmando contrato anual, <b>los primeros 3 meses de operación no se cobran</b> en el agente y en la agenda. Y en la tienda y en el paquete
+        de tienda + agente, el valor de lanzamiento se mantiene hasta esa fecha. Cuéntame tu caso y te digo exactamente qué te aplica.
       </div>
 
       <div class="meses">
@@ -563,7 +711,7 @@
           <li><b>Mensual</b> — mes a mes, sin compromiso.</li>
           <li><b>Semestral</b> — pagas 5 meses y el 6.º va por cuenta nuestra.</li>
           <li><b>Anual</b> — pagas 10 meses y 2 van por cuenta nuestra.</li>
-          <li><b>Contrato anual con la promo de lanzamiento</b> — en Agente y Agente + Agenda: los primeros 3 meses de operación sin costo (hasta el 31-oct-2026).</li>
+          <li><b>Contrato anual con la promo de lanzamiento</b> — en Agente y Agente + Agenda: los primeros 3 meses de operación sin costo (hasta el 30-nov-2026).</li>
         </ul>
         <p class="nota" style="margin-top:12px">La promo de lanzamiento y el descuento por prepago <strong style="color:var(--fg-2)">no se suman</strong>: se aplica el que más te convenga. Los descuentos por prepago son sobre la operación, no sobre el setup.</p>
       </div>
@@ -621,6 +769,14 @@
       <p class="eyebrow">Preguntas frecuentes</p>
       <h2 style="margin-top:14px;max-width:24ch">Lo que siempre me preguntan antes de empezar</h2>
       <div class="faq">
+        <details>
+          <summary>¿El agente también contesta Instagram o Messenger?</summary>
+          <p>Hoy el agente atiende el WhatsApp oficial, que es donde está el volumen de tu operación y donde está medido el caso. Instagram DM y Messenger son el siguiente módulo: se construyen sobre la misma plataforma de Meta, con permisos y revisión aparte, y se cotizan como fase 2. Lo decimos así a propósito: preferimos no anunciar un canal que todavía no atendemos.</p>
+        </details>
+        <details>
+          <summary>¿Ustedes manejan mi pauta en Instagram y Facebook?</summary>
+          <p>No. La publicidad y los perfiles son tuyos: los gestionas tú, tu equipo o tu trafikero. Nosotros construimos el destino —la tienda, el agente y los datos— y no cobramos por pauta ni la intermediamos. Lo que sí hacemos es dejar registrado de dónde vino cada cliente, para que esa pauta se pueda medir.</p>
+        </details>
         <details open>
           <summary>¿Y si el cliente quiere hablar con una persona?</summary>
           <p>La conversación pasa a tu equipo cuando el caso lo pide: reclamos, casos raros o simplemente cuando el cliente lo pide. La persona recibe el hilo completo, no empieza de cero.</p>
@@ -655,7 +811,7 @@
         </details>
         <details>
           <summary>¿Hasta cuándo están los precios de lanzamiento?</summary>
-          <p>Hasta el 31 de octubre de 2026. Hay descuento de lanzamiento en la tienda y en el paquete de tienda + agente, y en el agente y la agenda los primeros meses de operación van sin costo firmando contrato anual. Los valores exactos te los doy en la propuesta, según tu alcance.</p>
+          <p>Hasta el 30 de noviembre de 2026. Firmando contrato anual en el agente o la agenda, los primeros 3 meses de operación no se cobran; y en la tienda y en el paquete de tienda + agente se mantiene el valor de lanzamiento hasta esa fecha. Los valores exactos te los doy en la propuesta, según tu alcance.</p>
         </details>
         <details>
           <summary>¿Puedo pagar semestral o anual?</summary>
@@ -685,8 +841,8 @@
 
 <footer>
   <div class="wrap pie">
-    <span class="pie-marca"><img src="marca/isotipo.png" alt="">Johan Sarria — arquitectura de software y agentes de IA</span>
-    <span class="mono">vendible.cloud</span>
+    <span class="pie-marca"><img src="marca/isotipo.webp" alt="">Johan Sarria — arquitectura de software y agentes de IA</span>
+    <span class="mono">vendible.cloud · <a href="/blog/" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Blog</a> · <a href="/privacidad/" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Privacidad</a></span>
   </div>
 </footer>
 
@@ -723,7 +879,8 @@
       <textarea name="necesidad" rows="2" placeholder="Vender más por WhatsApp, agendar citas, montar la tienda…"></textarea>
     </label>
     <label class="lead-check"><input type="checkbox" name="acepto" required>
-      Autorizo el tratamiento de mis datos para que me contacten (Ley 1581 de 2012).</label>
+      Autorizo el tratamiento de mis datos para que me contacten, conforme a la
+      <a href="/privacidad/" target="_blank" rel="noopener" style="color:var(--teal)">política de tratamiento</a> (Ley 1581 de 2012).</label>
     <button type="submit" class="lead-enviar" id="leadEnviar">Enviar y seguir por WhatsApp</button>
     <p class="lead-nota">Si algo falla, igual te llevo a mi WhatsApp: el contacto nunca se pierde.</p>
   </form>
@@ -794,10 +951,11 @@
       return;
     }
 
-    var texto = 'Hola, soy ' + d.nombre + ' y tengo ' + d.negocio.toLowerCase()
-              + (d.ciudad ? ' en ' + d.ciudad : '') + '. '
-              + (d.necesidad ? d.necesidad + '. ' : '')
-              + 'Quiero saber qué me sirve y cuánto vale.';
+    var texto = 'Hola 👋 Tengo ' + d.negocio.toLowerCase()
+              + (d.ciudad ? ' en ' + d.ciudad : '')
+              + ' y quisiera saber si esto me sirve para vender más con IA.'
+              + (d.necesidad ? ' ' + d.necesidad + '.' : '')
+              + ' ¿Me cuentan?';
     var enlace = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(texto);
 
     /* WhatsApp PRIMERO y sincrónico: dentro del gesto del usuario el navegador no

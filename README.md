@@ -1,50 +1,58 @@
 # Vendible — Agentes de IA que venden por WhatsApp
 
-**🏠 [vendible.cloud](https://vendible.cloud/) · Cali, Colombia**
+**🏠 [vendible.cloud](https://vendible.cloud/) · Cali, Colombia · [LinkedIn](https://www.linkedin.com/company/vendiblecloud/) · [Instagram](https://www.instagram.com/vendiblecloud/)**
 
 ---
 
-Vendible es un producto de inteligencia artificial que convierte el WhatsApp oficial de un negocio en un vendedor autónomo: atención 24/7, consulta de inventario real, recuperación de carritos abandonados y notificación de guías de envío — sin intervención humana.
+Vendible despliega agentes de IA que atienden, venden y dan posventa por el WhatsApp Business oficial (Meta Cloud API) de un negocio, sobre sus datos reales: inventario, pedidos, citas y clientes. El agente no improvisa datos duros: consulta el inventario antes de prometer disponibilidad o precio, y pasa el caso a una persona del equipo cuando se sale del guion.
 
-En producción desde agosto de 2026 sobre una tienda real en Colombia.
+## 📊 Caso medido: AUREN
 
-## 📊 Resultados en producción
+Tienda de calzado en Shopify ([aurenstore.store](https://aurenstore.store)). Medición del **1-ago al 30-sep-2026**, sobre la base de datos de la tienda en solo lectura:
 
 | Métrica | Valor |
 |---|---|
-| Pedidos entrando por WhatsApp | **71,7 %** |
-| Conversión clic → pedido (1 mes) | **18 % → 55 %** |
-| Base de clientes propia, con origen | **90** |
-| Ticket promedio | **$186.000 COP** |
+| Facturado en la ventana | **$10.475.000 COP** (59 pedidos) |
+| Pedidos que pasan por WhatsApp | **67,3 %** (corte 21-sep) |
+| Clientes en base propia, con origen | **119** (y 46 leads) |
+| Ticket promedio | **$177.542 COP** |
 
-*Medición agosto–septiembre 2026 sobre una tienda real. Definición y período explícitos.*
+> **Qué no se puede atribuir al sistema:** en la misma ventana entró pauta pagada que administra un tercero, y no hay grupo de control. El método completo está en el [caso AUREN](https://vendible.cloud/casos/auren/).
 
 ## ⚙️ Qué hace
 
-- **Atención 24/7** — responde consultas de stock, precios y disponibilidad sobre el inventario real, con relevo humano cuando el caso lo requiere.
-- **Recuperación de carritos** — escalera de descuentos programada sobre el carrito abandonado real, no sobre templates genéricos.
-- **Guías de envío automáticas** — el cliente recibe su guía en el momento del despacho.
-- **Leads con origen** — cada interesado queda con el dato de la campaña que lo trajo (UTM, red social, QR).
+- **Atención 24/7** con relevo a una persona, sobre el inventario y los precios reales.
+- **Recuperación de carritos abandonados** con escalera de mensajes que se detiene cuando el pedido se paga.
+- **Guías de envío y posventa** con el estado real del despacho.
+- **Agenda y citas** para negocios con cita previa (salones, consultorios, talleres).
+- **Visibilidad en IA (AEO):** que el negocio sea citable por ChatGPT, Gemini y Perplexity.
 
-También funciona para negocios con **agenda** (salones, barberías, consultorios): asigna citas sobre la disponibilidad real, confirma, recuerda y reprograma.
+## 📚 Dónde leer más
+
+| Página | De qué trata |
+|---|---|
+| [Qué es un agente de IA para WhatsApp](https://vendible.cloud/blog/que-es-un-agente-de-ia-para-whatsapp/) | Agente vs. chatbot, con el caso real |
+| [Caso AUREN](https://vendible.cloud/casos/auren/) | Qué se construyó, cómo se midió y qué no se atribuye |
+| [Recuperación de carritos](https://vendible.cloud/casos-de-uso/recuperacion-carritos/) | El flujo completo, minuto a minuto |
+| [Integración con Shopify](https://vendible.cloud/integracion/shopify/) | Agente sobre un catálogo de Shopify |
+| [Integración con WooCommerce](https://vendible.cloud/integracion/woocommerce/) | Inventario real y posventa sin plugins nuevos |
+| [Visibilidad en IA](https://vendible.cloud/casos-de-uso/visibilidad-ia/) | Qué hace citable a un negocio y cómo se mide |
+| [Cómo se cotiza](https://vendible.cloud/precios/) | Qué mueve el precio |
 
 ## 🧱 Stack técnico
 
 | Capa | Tecnología |
 |---|---|
-| **Agente conversacional** | LLM auto-gestionado con acceso a inventario real vía API |
+| **Agente conversacional** | LLM con acceso a inventario real vía API |
 | **WhatsApp Business** | API oficial de Meta (WABA) con plantillas aprobadas |
-| **Backend** | Python, desplegado en VPS (Hostinger) |
-| **Proxy/Cache** | Caddy (auto-renovación SSL, compresión zstd/gzip) |
+| **Backend** | Python, desplegado en VPS |
+| **Proxy/caché** | Caddy + Cloudflare |
 | **Frontend** | HTML/CSS estático (landing), tema Shopify a medida (tienda) |
-| **Orquestación** | Hermes Agent |
 
 ## 🗂️ Este repo
 
-Contiene la **landing page** de Vendible (`index.html`) y sus assets estáticos (favicons, fuente, opengraph). El código de producción del agente y los scripts de despliegue se mantienen privados.
-
-→ [Ver el sitio en vivo](https://vendible.cloud/)
+Contiene una copia de la **landing page** (`index.html`) y sus assets estáticos. La fuente de verdad es [vendible.cloud](https://vendible.cloud/). El código del agente y los scripts de despliegue se mantienen privados.
 
 ## 📄 Licencia
 
-Este repositorio contiene material comercial público de Vendible. El código del agente y la lógica de producción son propiedad de Johan Sarria y no están incluidos aquí.
+Material comercial público de Vendible. El código del agente y la lógica de producción son propiedad de Johan Sarria y no están incluidos aquí.
